@@ -23,6 +23,6 @@ class Todo {
 export const App = (() => {
   const defaultProject = new Project('My Day', 'default-project')
   const projectsArr = [defaultProject];
-  
-  return {  }
+  const getProjects = () => projectsArr
+  return { getProjects }
 })()
