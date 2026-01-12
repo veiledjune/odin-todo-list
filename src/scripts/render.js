@@ -41,7 +41,6 @@ export const Render = (() => {
     const todoAddBtn = document.querySelector('.todo-add-btn');
     todoAddBtn.dataset.id = project.id;
     project.todos.forEach(todo => {
-      console.log(todo); 
       const todoDiv = CreateElement.createElement('div', 'todo-card');
       const todoCheckBtn = CreateElement.createElement('button', 'todo-check-btn');
       const todoCheckimg = todo.check ? 
@@ -56,6 +55,13 @@ export const Render = (() => {
       } else todoPriority.classList.add('--high');
       const todoEditBtn = CreateElement.createElement('button', 'todo-edit-btn');
       const todoDeleteBtn = CreateElement.createElement('button', 'todo-delete-btn');
+      todoDeleteBtn.dataset.id = todo.id;
+      todoDeleteBtn.addEventListener('click', () => {
+        const todoId = todoDeleteBtn.dataset.id;
+        const todoIndex = project.todos.findIndex(todo => todo.id === todoId);
+        App.deleteTodo(project, todoIndex);  
+        renderProject(projectIndex);
+      })
       const todoDeleteImg = CreateElement.createImage(deleteIcon);
       todoDeleteBtn.appendChild(todoDeleteImg);
       todoDiv.append(todoCheckBtn, todoTitle, todoDueDate, todoPriority, todoEditBtn, todoDeleteBtn, todoDescription)
