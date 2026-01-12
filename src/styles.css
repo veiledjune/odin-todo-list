@@ -155,3 +155,83 @@ body {
   grid-column-start: 2;
   grid-column-end: 7;
 }
+
+/*Forms*/
+
+form {
+  position: fixed;
+  top: 25%;
+  left: 40%;
+  padding: 2em;
+  background-color: white;
+  outline: 2px solid black;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  box-sizing: border-box;
+}
+
+form img {
+  width: 30px;
+}
+
+form fieldset {
+  border: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title,
+.form-input-container,
+form input,
+form select {
+  font-size: 1.25rem;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form input,
+form select {
+  box-sizing: border-box;
+  padding: 4px 15px;
+  width: 80%;
+}
+
+form input:focus,
+form select:focus {
+  outline: 1px solid rgb(37, 60, 90);
+}
+
+.form-button-fieldset {
+  align-items: center;
+}
+
+.project-form-add-btn,
+.todo-form-add-btn,
+.edit-form-add-btn {
+  border: 2px solid black;
+  border-radius: 100px;
+  padding: 3px 5px;
+}
+
+.project-form-add-btn:hover,
+.todo-form-add-btn:hover,
+.edit-form-add-btn:hover {
+  background-color: rgb(233, 233, 233);
+}
+
+.project-form-close-btn,
+.todo-form-close-btn,
+.edit-form-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
