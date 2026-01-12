@@ -15,6 +15,12 @@ export const Render = (() => {
       }
       const deleteBtn = CreateElement.createButton('project-delete-btn');
       deleteBtn.dataset.id = project.id;
+      deleteBtn.addEventListener('click', () => {
+        const projectId = deleteBtn.dataset.id;
+        const projectIndex = projectsArr.findIndex(project => project.id === projectId)
+        App.deleteProject(projectIndex);
+        renderNav();
+      })
       const deleteImg = CreateElement.createImage(deleteIcon);
       deleteBtn.appendChild(deleteImg)
       listItem.appendChild(deleteBtn);
