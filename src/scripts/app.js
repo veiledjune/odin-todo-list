@@ -20,7 +20,9 @@ class Todo {
   }
 }
 
-export const app = (() => {
+export const App = (() => {
+  const defaultProject = new Project('My Day', 'default-project')
+  const projectsArr = [defaultProject];
   
   return {  }
 })()
