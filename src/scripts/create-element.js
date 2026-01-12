@@ -11,5 +11,11 @@ export const CreateElement = (() => {
     button.classList.add(className)
     return button;
   }
-  return { createNavListItem, createButton }
+
+  const createImage = (src) => {
+    const image = document.createElement('img');
+    image.src = src;
+    return image;
+  }
+  return { createNavListItem, createButton, createImage }
 })()
