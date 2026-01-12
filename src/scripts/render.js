@@ -1,6 +1,9 @@
-import { App } from './app'
-import { CreateElement } from './create-element'
-import deleteIcon from '../icons/delete-icon.svg'
+import { App } from './app';
+import { CreateElement } from './create-element';
+import deleteIcon from '../icons/delete-icon.svg';
+import uncheckIcon from '../icons/uncheck-icon.svg';
+import checkIcon from '../icons/check-icon.svg';
+import editIcon from '../icons/edit-icon.svg';
 
 export const Render = (() => {
   const renderNav = () => {
@@ -8,24 +11,57 @@ export const Render = (() => {
     const navProjectList = document.querySelector('.nav-project-list');
     navProjectList.textContent = '';
     projectsArr.forEach(project => {
-      const listItem = CreateElement.createNavListItem('nav-project-item', project.title)
+      const listItem = CreateElement.createElement('li', 'nav-project-item', project.title);
       if (project.id === 'default-project') {
         navProjectList.appendChild(listItem)
         return;
       }
-      const deleteBtn = CreateElement.createButton('project-delete-btn');
+      const deleteBtn = CreateElement.createElement('button', 'project-delete-btn');
       deleteBtn.dataset.id = project.id;
       deleteBtn.addEventListener('click', () => {
         const projectId = deleteBtn.dataset.id;
         const projectIndex = projectsArr.findIndex(project => project.id === projectId)
         App.deleteProject(projectIndex);
         renderNav();
-      })
+      });
       const deleteImg = CreateElement.createImage(deleteIcon);
       deleteBtn.appendChild(deleteImg)
       listItem.appendChild(deleteBtn);
       navProjectList.appendChild(listItem)
-    })
+    });
   }
-  return { renderNav }
+
+  const renderProject = (projectIndex) => {
+    const projectsArr = App.getProjects();
+    const project = projectsArr[projectIndex];
+    const projectTitleElement = document.querySelector('.project-title');
+    projectTitleElement.textContent = project.title;
+    const todoListContainer = document.querySelector('.todo-list-container');
+    todoListContainer.textContent = '';
+    const todoAddBtn = document.querySelector('.todo-add-btn');
+    todoAddBtn.dataset.id = project.id;
+    project.todos.forEach(todo => {
+      console.log(todo); 
+      const todoDiv = CreateElement.createElement('div', 'todo-card');
+      const todoCheckBtn = CreateElement.createElement('button', 'todo-check-btn');
+      const todoCheckimg = todo.check ? 
+        CreateElement.createImage(checkIcon) : CreateElement.createImage(uncheckIcon);
+      todoCheckBtn.appendChild(todoCheckimg)
+      const todoTitle = CreateElement.createElement('h4', 'todo-title', `Title: ${todo.title}`)
+      const todoDescription = CreateElement.createElement('p', 'todo-description', todo.description);
+      const todoDueDate= CreateElement.createElement('span', 'todo-due-date', `Due: ${todo.dueDate}`);
+      const todoPriority = CreateElement.createElement('span', 'todo-priority', `Priority: ${todo.priority}`);
+      if (todo.priority === 'Low') {
+        todoPriority.classList.add('--low')
+      } else todoPriority.classList.add('--high');
+      const todoEditBtn = CreateElement.createElement('button', 'todo-edit-btn');
+      const todoDeleteBtn = CreateElement.createElement('button', 'todo-delete-btn');
+      const todoDeleteImg = CreateElement.createImage(deleteIcon);
+      todoDeleteBtn.appendChild(todoDeleteImg);
+      todoDiv.append(todoCheckBtn, todoTitle, todoDueDate, todoPriority, todoEditBtn, todoDeleteBtn, todoDescription)
+      todoListContainer.appendChild(todoDiv);
+    })
+    
+  }
+  return { renderNav, renderProject }
 })()
