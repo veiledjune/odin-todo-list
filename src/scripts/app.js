@@ -19,3 +19,8 @@ class Todo {
     this.check = !this.check
   }
 }
+
+export const app = (() => {
+  
+  return {  }
+})()
