@@ -24,5 +24,7 @@ export const App = (() => {
   const defaultProject = new Project('My Day', 'default-project')
   const projectsArr = [defaultProject];
   const getProjects = () => projectsArr
-  return { getProjects }
+  const addProject = (title) => projectsArr.push(new Project(title))
+  
+  return { getProjects, addProject }
 })()
