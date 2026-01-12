@@ -12,6 +12,12 @@ export const Render = (() => {
     navProjectList.textContent = '';
     projectsArr.forEach(project => {
       const listItem = CreateElement.createElement('li', 'nav-project-item', project.title);
+      listItem.dataset.id = project.id;
+      listItem.addEventListener('click', () => {
+        const projectId = listItem.dataset.id;
+        const projectIndex = projectsArr.findIndex(project => project.id === projectId);
+        renderProject(projectIndex)
+      })
       if (project.id === 'default-project') {
         navProjectList.appendChild(listItem)
         return;
