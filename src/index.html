@@ -1,9 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Odin Todo List</title>
-  </head>
-  <body></body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odin Todo List</title>
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="page-title">Odin Todo List</h1>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-header">
+      <h2 class="nav-title">Your Projects:</h2>
+      <button class="project-add-btn">
+        <img src="icons/add-icon.svg" alt="Add new project" />
+      </button>
+    </div>
+    <ul class="nav-project-list">
+      <li class="nav-project-item">
+        My Day
+        <button class="project-delete-btn">
+          <img src="icons/delete-icon.svg" alt="Delete project" />
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <main class="main">
+    <div class="project-container">
+      <div class="project-container-header">
+        <h3 class="project-title">My Day</h3>
+        <button class="todo-add-btn">
+          <img src="icons/add-icon.svg" alt="Add new project" />
+        </button>
+      </div>
+      <div class="todo-list-container">
+        <div class="todo-card">
+          <button class="todo-check-btn">
+            <img src="icons/uncheck-icon.svg" alt="Check todo" />
+          </button>
+          <h4 class="todo-title">Title: Study</h4>
+          <span class="todo-due-date">Due: 1/12/26</span>
+          <span class="todo-priority">Priority: High</span>
+          <button class="todo-edit-btn">
+            <img src="icons/edit-icon.svg" alt="Edit todo" />
+          </button>
+          <button class="todo-delete-btn">
+            <img src="icons/delete-icon.svg" alt="Delete todo" />
+          </button>
+          <p class="todo-description">Build Odin Project todo list</p>
+        </div>
+        <div class="todo-card">
+          <button class="todo-check-btn">
+            <img src="icons/uncheck-icon.svg" alt="Check todo" />
+          </button>
+          <h4 class="todo-title">Title: Study</h4>
+          <span class="todo-due-date">Due: 1/12/26</span>
+          <span class="todo-priority">Priority: High</span>
+          <button class="todo-edit-btn">
+            <img src="icons/edit-icon.svg" alt="Edit todo" />
+          </button>
+          <button class="todo-delete-btn">
+            <img src="icons/delete-icon.svg" alt="Delete todo" />
+          </button>
+          <p class="todo-description">Build Odin Project todo list</p>
+        </div>
+      </div>
+    </div>
+    <dialog class="project-dialog">
+      <form class="project-form">
+        <h5 class="form-title">Add a new project</h5>
+        <fieldset class="form-input-fieldset">
+          <div class="form-input-container">
+            <label for="project-title">Title: *</label>
+            <input type="text" id="project-title" />
+          </div>
+        </fieldset>
+        <fieldset class="form-button-fieldset">
+          <button class="project-form-add-btn" type="button">
+            <img src="icons/add-icon.svg" alt="Create project" />
+          </button>
+          <button class="project-form-close-btn" type="button">
+            <img src="icons/close-icon.svg" alt="Close form" />
+          </button>
+        </fieldset>
+      </form>
+    </dialog>
+    <dialog class="todo-dialog">
+      <form class="todo-form">
+        <h5 class="form-title">Add a new todo</h5>
+        <fieldset class="form-input-fieldset">
+          <div class="form-input-container">
+            <label for="todo-title">Title: *</label>
+            <input type="text" id="todo-title" placeholder="Todo Title" autocomplete="off" required />
+          </div>
+          <div class="form-input-container">
+            <label for="todo-description">Description: *</label>
+            <input type="text" id="todo-description" placeholder="Todo Description" autocomplete="off" required />
+          </div>
+          <div class="form-input-container">
+            <label for="todo-due-date">Due: *</label>
+            <input type="text" id="todo-due-date" required />
+          </div>
+          <div class="form-input-container">
+            <label for="todo-priority">Priority: *</label>
+            <select id="todo-priority" required>
+              <option value="Low">Low</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset class="form-button-fieldset">
+          <button class="todo-form-add-btn" type="button">
+            <img src="icons/add-icon.svg" alt="Create project" />
+          </button>
+          <button class="todo-form-close-btn" type="button">
+            <img src="icons/close-icon.svg" alt="Close form" />
+          </button>
+        </fieldset>
+      </form>
+    </dialog>
+    <dialog class="edit-dialog">
+      <form class="edit-form">
+        <h5 class="form-title">Edit todo</h5>
+        <fieldset class="form-input-fieldset">
+          <div class="form-input-container">
+            <label for="edit-title">Title: *</label>
+            <input type="text" id="edit-title" />
+          </div>
+          <div class="form-input-container">
+            <label for="edit-description">Description: *</label>
+            <input type="text" id="edit-description" autocomplete="off" required />
+          </div>
+          <div class="form-input-container">
+            <label for="edit-due-date">Due: *</label>
+            <input type="text" id="edit-due-date" required />
+          </div>
+          <div class="form-input-container">
+            <label for="edit-priority">Priority: *</label>
+            <select id="edit-priority" required>
+              <option value="Low">Low</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </fieldset>
+        <fieldset class="form-button-fieldset">
+          <button class="edit-form-add-btn" type="button">
+            <img src="icons/add-icon.svg" alt="Create project" />
+          </button>
+          <button class="edit-form-close-btn" type="button">
+            <img src="icons/close-icon.svg" alt="Close form" />
+          </button>
+        </fieldset>
+      </form>
+    </dialog>
+  </main>
+</body>
+
 </html>
