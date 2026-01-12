@@ -26,3 +26,29 @@
 ul {
   list-style: none;
 }
+
+body {
+  display: grid;
+  grid-template: 130px calc(100vh - 130px) / 250px 1fr;
+}
+
+.nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: lightpink;
+}
+
+.header {
+  background-color: lightblue;
+  grid-column-start: 2;
+}
+
+.main {
+  grid-column-start: 2;
+  grid-row-end: 3;
+  background-color: lightgreen;
+  padding: 50px;
+}
