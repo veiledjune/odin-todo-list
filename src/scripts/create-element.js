@@ -5,5 +5,11 @@ export const CreateElement = (() => {
     listItem.textContent = textContent;
     return listItem;
   }
-  return { createNavListItem }
+
+  const createButton = (className) => {
+    const button = document.createElement('button');
+    button.classList.add(className)
+    return button;
+  }
+  return { createNavListItem, createButton }
 })()
