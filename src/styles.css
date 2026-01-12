@@ -27,6 +27,8 @@ ul {
   list-style: none;
 }
 
+/*Page layout*/
+
 body {
   display: grid;
   grid-template: 130px calc(100vh - 130px) / 250px 1fr;
@@ -42,7 +44,6 @@ body {
 }
 
 .header {
-  background-color: lightblue;
   grid-column-start: 2;
 }
 
@@ -51,4 +52,12 @@ body {
   grid-row-end: 3;
   background-color: lightgreen;
   padding: 50px;
+}
+
+/*Header*/
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
