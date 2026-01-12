@@ -17,5 +17,13 @@ export const CreateElement = (() => {
     image.src = src;
     return image;
   }
-  return { createNavListItem, createButton, createImage }
+
+  const createElement = (type, className, textContent) => {
+    const element = document.createElement(type);
+    element.classList.add(className);
+    if (!textContent) return element;
+    element.textContent = textContent;
+    return element;
+  }
+  return { createNavListItem, createButton, createImage, createElement }
 })()
