@@ -64,6 +64,18 @@ export const Render = (() => {
         todoPriority.classList.add('--low')
       } else todoPriority.classList.add('--high');
       const todoEditBtn = CreateElement.createElement('button', 'todo-edit-btn');
+      todoEditBtn.addEventListener('click', () => {
+        FormEvents.openForm('.edit-dialog');
+        const editFormSubmitButton = document.querySelector('.edit-form-add-btn');
+        editFormSubmitButton.dataset.id = todo.id;
+        const titleInput = document.getElementById('edit-title');
+        const descriptionInput = document.getElementById('edit-description');
+        const dueDateInput = document.getElementById('edit-due-date');
+        titleInput.value = todo.title;
+        descriptionInput.value = todo.description;
+        console.log(todo.dueDate);
+        dueDateInput.valueAsDate = new Date(todo.dueDate);
+      })
       const todoEditIcon = CreateElement.createImage(editIcon);
       todoEditBtn.appendChild(todoEditIcon);
       const todoDeleteBtn = CreateElement.createElement('button', 'todo-delete-btn');
