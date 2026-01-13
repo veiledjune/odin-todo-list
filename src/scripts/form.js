@@ -83,7 +83,7 @@ export const FormEvents = (() => {
     const dueDateInput = document.getElementById('edit-due-date');
     titleInput.value = todoObject.title;
     descriptionInput.value = todoObject.description;
-    dueDateInput.valueAsDate = new Date();
+    dueDateInput.valueAsDate = new Date(todoObject.dueDate);
   };
 
   const editFormEvents = () => {
