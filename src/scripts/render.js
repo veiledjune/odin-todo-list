@@ -5,6 +5,7 @@ import deleteIcon from '../icons/delete-icon.svg';
 import uncheckIcon from '../icons/uncheck-icon.svg';
 import checkIcon from '../icons/check-icon.svg';
 import editIcon from '../icons/edit-icon.svg';
+import { format } from 'date-fns';
 
 export const Render = (() => {
   const projectsArr = App.getProjects();
@@ -78,7 +79,7 @@ export const Render = (() => {
         titleInput.value = todo.title;
         descriptionInput.value = todo.description;
         console.log(todo.dueDate);
-        dueDateInput.valueAsDate = new Date(todo.dueDate);
+        dueDateInput.valueAsDate = new Date();
       })
       const todoEditIcon = CreateElement.createImage(editIcon);
       todoEditBtn.appendChild(todoEditIcon);
