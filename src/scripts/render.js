@@ -1,5 +1,6 @@
 import { App } from './app';
 import { CreateElement } from './create-element';
+import { FormEvents } from './form';
 import deleteIcon from '../icons/delete-icon.svg';
 import uncheckIcon from '../icons/uncheck-icon.svg';
 import checkIcon from '../icons/check-icon.svg';
@@ -63,6 +64,8 @@ export const Render = (() => {
         todoPriority.classList.add('--low')
       } else todoPriority.classList.add('--high');
       const todoEditBtn = CreateElement.createElement('button', 'todo-edit-btn');
+      const todoEditIcon = CreateElement.createImage(editIcon);
+      todoEditBtn.appendChild(todoEditIcon);
       const todoDeleteBtn = CreateElement.createElement('button', 'todo-delete-btn');
       todoDeleteBtn.dataset.id = todo.id;
       todoDeleteBtn.addEventListener('click', () => {
