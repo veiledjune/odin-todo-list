@@ -156,6 +156,14 @@ body {
   grid-column-end: 7;
 }
 
+.--low {
+  color: green;
+}
+
+.--high {
+  color :rgb(146, 31, 31);
+}
+
 /*Forms*/
 
 form {
