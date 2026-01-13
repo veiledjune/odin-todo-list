@@ -23,26 +23,41 @@ class Todo {
 
 export const App = (() => {
   const defaultProject = new Project('My Day', 'default-project');
-  const projectsArr = [defaultProject];
+  const storedProjectsArr = JSON.parse(localStorage.getItem('projectsArr'));
+  const projectsArr = storedProjectsArr ? storedProjectsArr : [defaultProject];
   let currentProject = projectsArr[0];
   let currentTodo;
   const getProjects = () => projectsArr;
-  const addProject = (title) => projectsArr.push(new Project(title));
-  const deleteProject = (projectIndex) => projectsArr.splice(projectIndex, 1);
+  const addProject = (title) => {
+    projectsArr.push(new Project(title));
+    saveToStorage();
+  };
+  const deleteProject = (projectIndex) => {
+    projectsArr.splice(projectIndex, 1);
+    saveToStorage();
+  };
   const addTodo = (projectIndex, title, description, dueDate, priority) => {
     projectsArr[projectIndex].todos.push(
       new Todo(title, description, dueDate, priority)
     );
+    saveToStorage();
   };
   const editTodo = (todo, title, description, dueDate, priority) => {
     todo.title = title;
     todo.description = description;
     todo.dueDate = dueDate;
     todo.priority = priority;
+    saveToStorage();
   };
-  const deleteTodo = (project, todoIndex) => project.todos.splice(todoIndex, 1);
+  const deleteTodo = (project, todoIndex) => {
+    project.todos.splice(todoIndex, 1);
+    saveToStorage();
+  };
   const getCurrentProject = () => currentProject;
-  const updateCurrentProject = (newProject) => (currentProject = newProject);
+  const updateCurrentProject = (newProject) => {
+    currentProject = newProject;
+    saveToStorage();
+  };
   const getProjectIndex = (id) => {
     const projectIndex = projectsArr.findIndex((project) => project.id === id);
     return projectIndex;
@@ -59,8 +74,13 @@ export const App = (() => {
     );
     return todoIndex;
   };
-  const updateActiveTodo = (todo) => (currentTodo = todo);
+  const updateActiveTodo = (todo) => {
+    currentTodo = todo;
+    saveToStorage();
+  };
   const getActiveTodo = () => currentTodo;
+  const saveToStorage = () =>
+    localStorage.setItem('projectsArr', JSON.stringify(projectsArr));
   return {
     getProjects,
     addProject,
