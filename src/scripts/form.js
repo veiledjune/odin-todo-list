@@ -26,7 +26,9 @@ export const FormEvents = (() => {
 
   const formEvents = (dialogSelector, formSelector, openBtn, closeBtn, addBtn) => {
     const formOpenBtn = document.querySelector(openBtn);
-    formOpenBtn.addEventListener('click', () => openForm(dialogSelector));
+    if (formOpenBtn) 
+      formOpenBtn.addEventListener('click', () => openForm(dialogSelector))
+    
     const formCloseBtn = document.querySelector(closeBtn);
     formCloseBtn.addEventListener('click', () => {
       resetForm(formSelector);
