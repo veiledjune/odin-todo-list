@@ -61,7 +61,7 @@ export const Render = (() => {
         'todo-check-btn'
       );
       todoCheckBtn.addEventListener('click', () => {
-        todo.toggleCheck();
+        App.toggleCheck(todo);
         renderProject();
       });
       const todoCheckImg = todo.check
@@ -78,7 +78,7 @@ export const Render = (() => {
         'todo-description',
         todo.description
       );
-      const dateObject = parse(todo.dueDate, 'yyyy-MM-dd', new Date()); 
+      const dateObject = parse(todo.dueDate, 'yyyy-MM-dd', new Date());
       const todoDueDate = CreateElement.createElement(
         'span',
         'todo-due-date',

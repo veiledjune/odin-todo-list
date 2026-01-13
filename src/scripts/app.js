@@ -16,9 +16,6 @@ class Todo {
     this.id = crypto.randomUUID();
     this.check = false;
   }
-  toggleCheck() {
-    this.check = !this.check;
-  }
 }
 
 export const App = (() => {
@@ -81,6 +78,10 @@ export const App = (() => {
   const getActiveTodo = () => currentTodo;
   const saveToStorage = () =>
     localStorage.setItem('projectsArr', JSON.stringify(projectsArr));
+  const toggleCheck = (todo) => {
+    todo.check = !todo.check;
+    saveToStorage();
+  };
   return {
     getProjects,
     addProject,
@@ -95,5 +96,6 @@ export const App = (() => {
     getTodoIndex,
     updateActiveTodo,
     getActiveTodo,
+    toggleCheck,
   };
 })();
