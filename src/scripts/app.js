@@ -11,7 +11,7 @@ class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
-    this.dueDate = format(dueDate, 'dd-MM-yyyy');
+    this.dueDate = dueDate;
     this.priority = priority;
     this.id = crypto.randomUUID();
     this.check = false;
@@ -37,7 +37,7 @@ export const App = (() => {
   const editTodo = (todo, title, description, dueDate, priority) => {
     todo.title = title;
     todo.description = description;
-    todo.dueDate = format(dueDate, 'dd-MM-yyyy');
+    todo.dueDate = dueDate;
     todo.priority = priority;
   };
   const deleteTodo = (project, todoIndex) => project.todos.splice(todoIndex, 1);
