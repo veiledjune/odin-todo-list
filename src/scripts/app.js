@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 class Project {
   constructor(title, id = crypto.randomUUID()) {
     this.title = title;
@@ -10,7 +11,7 @@ class Todo {
   constructor(title, description, dueDate, priority) {
     this.title = title;
     this.description = description;
-    this.dueDate = dueDate;
+    this.dueDate = format(dueDate, 'dd-MM-yyy');
     this.priority = priority;
     this.id = crypto.randomUUID();
     this.check = false;
@@ -32,7 +33,7 @@ export const App = (() => {
   const editTodo = (projectIndex, todoIndex, title, description, dueDate, priority) => {
     projectsArr[projectIndex].todos[todoIndex].title = title;
     projectsArr[projectIndex].todos[todoIndex].description = description;
-    projectsArr[projectIndex].todos[todoIndex].dueDate = dueDate;
+    projectsArr[projectIndex].todos[todoIndex].dueDate = format(dueDate, 'dd-MM-yyy');
     projectsArr[projectIndex].todos[todoIndex].priority = priority;
   }
   const deleteTodo = (project, todoIndex) => project.todos.splice(todoIndex, 1);
