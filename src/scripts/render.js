@@ -53,6 +53,10 @@ export const Render = (() => {
     project.todos.forEach(todo => {
       const todoDiv = CreateElement.createElement('div', 'todo-card');
       const todoCheckBtn = CreateElement.createElement('button', 'todo-check-btn');
+      todoCheckBtn.addEventListener('click', () => {
+        todo.toggleCheck();
+        renderProject(projectIndex);
+      })
       const todoCheckimg = todo.check ? 
         CreateElement.createImage(checkIcon) : CreateElement.createImage(uncheckIcon);
       todoCheckBtn.appendChild(todoCheckimg)
