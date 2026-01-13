@@ -6,14 +6,16 @@ import checkIcon from '../icons/check-icon.svg';
 import editIcon from '../icons/edit-icon.svg';
 
 export const Render = (() => {
+  const projectsArr = App.getProjects();
+  let currentProject = projectsArr[0];
   const renderNav = () => {
-    const projectsArr = App.getProjects()
     const navProjectList = document.querySelector('.nav-project-list');
     navProjectList.textContent = '';
     projectsArr.forEach(project => {
       const listItem = CreateElement.createElement('li', 'nav-project-item', project.title);
       listItem.dataset.id = project.id;
       listItem.addEventListener('click', () => {
+        currentProject = project;
         const projectId = listItem.dataset.id;
         const projectIndex = projectsArr.findIndex(project => project.id === projectId);
         renderProject(projectIndex)
@@ -24,7 +26,9 @@ export const Render = (() => {
       }
       const deleteBtn = CreateElement.createElement('button', 'project-delete-btn');
       deleteBtn.dataset.id = project.id;
-      deleteBtn.addEventListener('click', () => {
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentProject === project) renderProject(0)
         const projectId = deleteBtn.dataset.id;
         const projectIndex = projectsArr.findIndex(project => project.id === projectId)
         App.deleteProject(projectIndex);
@@ -38,7 +42,6 @@ export const Render = (() => {
   }
 
   const renderProject = (projectIndex) => {
-    const projectsArr = App.getProjects();
     const project = projectsArr[projectIndex];
     const projectTitleElement = document.querySelector('.project-title');
     projectTitleElement.textContent = project.title;
