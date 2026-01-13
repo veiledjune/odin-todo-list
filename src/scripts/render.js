@@ -64,10 +64,10 @@ export const Render = (() => {
         todo.toggleCheck();
         renderProject();
       });
-      const todoCheckimg = todo.check
+      const todoCheckImg = todo.check
         ? CreateElement.createImage(checkIcon)
         : CreateElement.createImage(uncheckIcon);
-      todoCheckBtn.appendChild(todoCheckimg);
+      todoCheckBtn.appendChild(todoCheckImg);
       const todoTitle = CreateElement.createElement(
         'h4',
         'todo-title',
