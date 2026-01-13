@@ -1,6 +1,7 @@
 import { App } from './app';
 import { CreateElement } from './create-element';
 import { FormEvents } from './form';
+import { format, parse } from 'date-fns';
 import deleteIcon from '../icons/delete-icon.svg';
 import uncheckIcon from '../icons/uncheck-icon.svg';
 import checkIcon from '../icons/check-icon.svg';
@@ -34,7 +35,7 @@ export const Render = (() => {
         const currentProject = App.getCurrentProject();
         if (project === currentProject) {
           App.updateCurrentProject(projectsArr[0]);
-          renderProject(0);
+          renderProject();
         }
         const projectIndex = App.getProjectIndex(project.id);
         App.deleteProject(projectIndex);
@@ -77,10 +78,11 @@ export const Render = (() => {
         'todo-description',
         todo.description
       );
+      const dateObject = parse(todo.dueDate, 'yyyy-MM-dd', new Date()); 
       const todoDueDate = CreateElement.createElement(
         'span',
         'todo-due-date',
-        `Due: ${todo.dueDate}`
+        `Due: ${format(dateObject, 'dd-MM-yyyy')}`
       );
       const todoPriority = CreateElement.createElement(
         'span',
@@ -107,10 +109,9 @@ export const Render = (() => {
       );
       todoDeleteBtn.addEventListener('click', () => {
         const currentProject = App.getCurrentProject();
-        const currentProjectIndex = App.getCurrentProjectIndex();
         const todoIndex = App.getTodoIndex(currentProject, todo);
         App.deleteTodo(currentProject, todoIndex);
-        renderProject(currentProjectIndex);
+        renderProject();
       });
       const todoDeleteImg = CreateElement.createImage(deleteIcon);
       todoDeleteBtn.appendChild(todoDeleteImg);
