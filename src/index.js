@@ -3,7 +3,7 @@ import './styles.css';
 import { Render } from './scripts/render';
 import { FormEvents } from './scripts/form';
 Render.renderNav();
-Render.renderProject(0);
+Render.renderProject();
 FormEvents.formEvents(
   '.project-dialog',
   '.project-form',
