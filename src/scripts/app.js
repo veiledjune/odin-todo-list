@@ -29,6 +29,12 @@ export const App = (() => {
   const addTodo = (projectIndex, title, description, dueDate, priority) => {
     projectsArr[projectIndex].todos.push(new Todo(title, description, dueDate, priority));
   }
+  const editTodo = (projectIndex, todoIndex, title, description, dueDate, priority) => {
+    projectsArr[projectIndex].todos[todoIndex].title = title;
+    projectsArr[projectIndex].todos[todoIndex].description = description;
+    projectsArr[projectIndex].todos[todoIndex].dueDate = dueDate;
+    projectsArr[projectIndex].todos[todoIndex].priority = priority;
+  }
   const deleteTodo = (project, todoIndex) => project.todos.splice(todoIndex, 1);
-  return { getProjects, addProject, deleteProject, addTodo, deleteTodo }
+  return { getProjects, addProject, deleteProject, addTodo, deleteTodo, editTodo }
 })()
