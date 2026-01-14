@@ -127,7 +127,7 @@ body {
 }
 
 .todo-card {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
   padding: 1em;
   display: grid;
