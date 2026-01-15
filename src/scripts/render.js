@@ -18,8 +18,11 @@ export const Render = (() => {
         'nav-project-item',
         project.title
       );
+      const currentProject = App.getCurrentProject();
+      if (project.id === currentProject.id) addSelectedClass(listItem);
       listItem.addEventListener('click', () => {
         App.updateCurrentProject(project);
+        addSelectedClass(listItem);
         renderProject();
       });
       if (project.id === 'default-project') {
@@ -126,6 +129,15 @@ export const Render = (() => {
       );
       todoListContainer.appendChild(todoDiv);
     });
+  };
+
+  const addSelectedClass = (listItem) => {
+    const listItems = document.querySelectorAll('.nav-project-item');
+    listItems.forEach((item) => {
+      if (item.classList.contains('--selected'))
+        item.classList.remove('--selected');
+    });
+    listItem.classList.add('--selected');
   };
   return { renderNav, renderProject };
 })();
