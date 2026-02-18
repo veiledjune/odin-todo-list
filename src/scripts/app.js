@@ -1,4 +1,3 @@
-import { format } from 'date-fns';
 class Project {
   constructor(title, id = crypto.randomUUID()) {
     this.title = title;
@@ -35,7 +34,7 @@ export const App = (() => {
   };
   const addTodo = (projectIndex, title, description, dueDate, priority) => {
     projectsArr[projectIndex].todos.push(
-      new Todo(title, description, dueDate, priority)
+      new Todo(title, description, dueDate, priority),
     );
     saveToStorage();
   };
@@ -61,13 +60,13 @@ export const App = (() => {
   };
   const getCurrentProjectIndex = () => {
     const projectIndex = projectsArr.findIndex(
-      (project) => project === currentProject
+      (project) => project === currentProject,
     );
     return projectIndex;
   };
   const getTodoIndex = (currentProject, todoObject) => {
     const todoIndex = currentProject.todos.findIndex(
-      (todo) => todo.id === todoObject.id
+      (todo) => todo.id === todoObject.id,
     );
     return todoIndex;
   };
