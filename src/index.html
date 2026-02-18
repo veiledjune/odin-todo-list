@@ -1,126 +1,155 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Todo List</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Odin Todo List</title>
-</head>
+  <body>
+    <header class="header">
+      <h1 class="page-title">Odin Todo List</h1>
+    </header>
 
-<body>
-  <header class="header">
-    <h1 class="page-title">Odin Todo List</h1>
-  </header>
-
-  <nav class="nav">
-    <div class="nav-header">
-      <h2 class="nav-title">Your Projects:</h2>
-      <button class="project-add-btn">
-        <img src="icons/add-icon.svg" alt="Add new project" />
-      </button>
-    </div>
-    <ul class="nav-project-list"></ul>
-  </nav>
-  <main class="main">
-    <div class="project-container">
-      <div class="project-container-header">
-        <h3 class="project-title"></h3>
-        <button class="todo-add-btn">
+    <nav class="nav">
+      <div class="nav-header">
+        <h2 class="nav-title">Your Projects:</h2>
+        <button class="project-add-btn">
           <img src="icons/add-icon.svg" alt="Add new project" />
         </button>
       </div>
-      <div class="todo-list-container"></div>
-    </div>
-    <dialog class="project-dialog">
-      <form class="project-form">
-        <h5 class="form-title">Add a new project</h5>
-        <fieldset class="form-input-fieldset">
-          <div class="form-input-container">
-            <label for="project-title">Title: *</label>
-            <input type="text" id="project-title" placeholder="Project Title" maxlength="25" autocomplete="off"
-              required />
-          </div>
-        </fieldset>
-        <fieldset class="form-button-fieldset">
-          <button class="project-form-add-btn" type="button">
-            <img src="icons/add-icon.svg" alt="Create project" />
+      <ul class="nav-project-list"></ul>
+    </nav>
+    <main class="main">
+      <div class="project-container">
+        <div class="project-container-header">
+          <h3 class="project-title"></h3>
+          <button class="todo-add-btn">
+            <img src="icons/add-icon-main.svg" alt="Add new project" />
           </button>
-          <button class="project-form-close-btn" type="button">
-            <img src="icons/close-icon.svg" alt="Close form" />
-          </button>
-        </fieldset>
-      </form>
-    </dialog>
-    <dialog class="todo-dialog">
-      <form class="todo-form">
-        <h5 class="form-title">Add a new todo</h5>
-        <fieldset class="form-input-fieldset">
-          <div class="form-input-container">
-            <label for="todo-title">Title: *</label>
-            <input type="text" id="todo-title" maxlength="25" placeholder="Todo Title" autocomplete="off" required />
-          </div>
-          <div class="form-input-container">
-            <label for="todo-description">Description: *</label>
-            <input type="text" id="todo-description" maxlength="60" placeholder="Todo Description" autocomplete="off"
-              required />
-          </div>
-          <div class="form-input-container">
-            <label for="todo-due-date">Due: *</label>
-            <input type="date" id="todo-due-date" required />
-          </div>
-          <div class="form-input-container">
-            <label for="todo-priority">Priority: *</label>
-            <select id="todo-priority" required>
-              <option value="Low">Low</option>
-              <option value="High">High</option>
-            </select>
-          </div>
-        </fieldset>
-        <fieldset class="form-button-fieldset">
-          <button class="todo-form-add-btn" type="button">
-            <img src="icons/add-icon.svg" alt="Create project" />
-          </button>
-          <button class="todo-form-close-btn" type="button">
-            <img src="icons/close-icon.svg" alt="Close form" />
-          </button>
-        </fieldset>
-      </form>
-    </dialog>
-    <dialog class="edit-dialog">
-    <form class="edit-form">
-      <h5 class="form-title">Edit todo</h5>
-      <fieldset class="form-input-fieldset">
-        <div class="form-input-container">
-          <label for="edit-title">Title: *</label>
-          <input type="text" id="edit-title" maxlength="25" autocomplete="off" required/>
         </div>
-        <div class="form-input-container">
-          <label for="edit-description">Description: *</label>
-          <input type="text" id="edit-description" maxlength="60" autocomplete="off" required />
-        </div>
-        <div class="form-input-container">
-          <label for="edit-due-date">Due: *</label>
-          <input type="date" id="edit-due-date" required />
-        </div>
-        <div class="form-input-container">
-          <label for="edit-priority">Priority: *</label>
-          <select id="edit-priority" required>
-            <option value="Low">Low</option>
-            <option value="High">High</option>
-          </select>
-        </div>
-      </fieldset>
-      <fieldset class="form-button-fieldset">
-        <button class="edit-form-add-btn" type="button">
-          <img src="icons/add-icon.svg" alt="Create project" />
-        </button>
-        <button class="edit-form-close-btn" type="button">
-          <img src="icons/close-icon.svg" alt="Close form" />
-        </button>
-      </fieldset>
-    </form>
-    </dialog>
-  </main>
-</body>
-
+        <div class="todo-list-container"></div>
+      </div>
+      <dialog class="project-dialog">
+        <form class="project-form">
+          <h5 class="form-title">Add a new project</h5>
+          <fieldset class="form-input-fieldset">
+            <div class="form-input-container">
+              <label for="project-title">Title: *</label>
+              <input
+                type="text"
+                id="project-title"
+                placeholder="Project Title"
+                maxlength="25"
+                autocomplete="off"
+                required
+              />
+            </div>
+          </fieldset>
+          <fieldset class="form-button-fieldset">
+            <button class="project-form-add-btn" type="button">
+              <img src="icons/add-icon.svg" alt="Create project" />
+            </button>
+            <button class="project-form-close-btn" type="button">
+              <img src="icons/close-icon.svg" alt="Close form" />
+            </button>
+          </fieldset>
+        </form>
+      </dialog>
+      <dialog class="todo-dialog">
+        <form class="todo-form">
+          <h5 class="form-title">Add a new todo</h5>
+          <fieldset class="form-input-fieldset">
+            <div class="form-input-container">
+              <label for="todo-title">Title: *</label>
+              <input
+                type="text"
+                id="todo-title"
+                maxlength="25"
+                placeholder="Todo Title"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-input-container">
+              <label for="todo-description">Description: *</label>
+              <input
+                type="text"
+                id="todo-description"
+                maxlength="60"
+                placeholder="Todo Description"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-input-container">
+              <label for="todo-due-date">Due: *</label>
+              <input type="date" id="todo-due-date" required />
+            </div>
+            <div class="form-input-container">
+              <label for="todo-priority">Priority: *</label>
+              <select id="todo-priority" required>
+                <option value="Low">Low</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-button-fieldset">
+            <button class="todo-form-add-btn" type="button">
+              <img src="icons/add-icon.svg" alt="Create project" />
+            </button>
+            <button class="todo-form-close-btn" type="button">
+              <img src="icons/close-icon.svg" alt="Close form" />
+            </button>
+          </fieldset>
+        </form>
+      </dialog>
+      <dialog class="edit-dialog">
+        <form class="edit-form">
+          <h5 class="form-title">Edit todo</h5>
+          <fieldset class="form-input-fieldset">
+            <div class="form-input-container">
+              <label for="edit-title">Title: *</label>
+              <input
+                type="text"
+                id="edit-title"
+                maxlength="25"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-input-container">
+              <label for="edit-description">Description: *</label>
+              <input
+                type="text"
+                id="edit-description"
+                maxlength="60"
+                autocomplete="off"
+                required
+              />
+            </div>
+            <div class="form-input-container">
+              <label for="edit-due-date">Due: *</label>
+              <input type="date" id="edit-due-date" required />
+            </div>
+            <div class="form-input-container">
+              <label for="edit-priority">Priority: *</label>
+              <select id="edit-priority" required>
+                <option value="Low">Low</option>
+                <option value="High">High</option>
+              </select>
+            </div>
+          </fieldset>
+          <fieldset class="form-button-fieldset">
+            <button class="edit-form-add-btn" type="button">
+              <img src="icons/add-icon.svg" alt="Create project" />
+            </button>
+            <button class="edit-form-close-btn" type="button">
+              <img src="icons/close-icon.svg" alt="Close form" />
+            </button>
+          </fieldset>
+        </form>
+      </dialog>
+    </main>
+  </body>
 </html>
