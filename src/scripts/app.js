@@ -30,3 +30,40 @@ class Todo {
     this.check = false;
   }
 }
+
+export const app = (() => {
+  const defaultProject = new Project('My Day', 'default-project');
+  const projectsArr = [defaultProject];
+
+  let selectedProject = projectsArr[0];
+
+  let todoToEdit = null;
+
+  const getProjects = () => projectsArr;
+
+  const addProject = (title) => projectsArr.push(new Project(title));
+
+  const deleteProject = (projectIndex) => projectsArr.splice(projectIndex, 1);
+
+  const getProjectIndex = (projectId) =>
+    projectsArr.findIndex((project) => project.id === projectId);
+
+  const getSelectedProject = () => selectedProject;
+
+  const setSelectedProject = (project) => (selectedProject = project);
+
+  const setTodoToEdit = (todo) => (todoToEdit = todo);
+
+  const getTodoToEdit = () => todoToEdit;
+
+  return {
+    getProjects,
+    addProject,
+    deleteProject,
+    getProjectIndex,
+    getSelectedProject,
+    setSelectedProject,
+    setTodoToEdit,
+    getTodoToEdit,
+  };
+})();
