@@ -1,3 +1,5 @@
+import { handleLocalStorage } from './localStorage';
+
 class Project {
   constructor(title, id = crypto.randomUUID()) {
     this.title = title;
@@ -33,7 +35,24 @@ class Todo {
 
 export const app = (() => {
   const defaultProject = new Project('My Day', 'default-project');
-  const projectsArr = [defaultProject];
+  const storedProjects = handleLocalStorage.getProjects('projectsArr');
+  const projectsArr = storedProjects
+    ? storedProjects.map((project) => {
+        const newProject = new Project(project.title, project.id);
+        newProject.todos = project.todos.map((todo) => {
+          const newTodo = new Todo(
+            todo.title,
+            todo.description,
+            todo.dueDate,
+            todo.priority,
+          );
+          newTodo.id = todo.id;
+          newTodo.check = todo.check;
+          return newTodo;
+        });
+        return newProject;
+      })
+    : [defaultProject];
 
   let selectedProject = projectsArr[0];
 

@@ -1,5 +1,6 @@
 import { render } from './render';
 import { app } from './app';
+import { handleLocalStorage } from './localStorage';
 
 export const events = (() => {
   const form = document.querySelector('.form');
@@ -27,10 +28,12 @@ export const events = (() => {
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+      const projectsArr = app.getProjects();
       const selectedProject = app.getSelectedProject();
       if (formType === 'project') {
         const titleInput = document.getElementById('project-title');
         app.addProject(titleInput.value);
+        handleLocalStorage.saveProjects(projectsArr);
         render.renderNav();
         resetForm();
       } else {
@@ -45,6 +48,7 @@ export const events = (() => {
             dueDateInput.value,
             priorityInput.value,
           );
+          handleLocalStorage.saveProjects(projectsArr);
           render.renderProject();
           resetForm();
         } else {
@@ -56,6 +60,7 @@ export const events = (() => {
             dueDateInput.value,
             priorityInput.value,
           );
+          handleLocalStorage.saveProjects(projectsArr);
           render.renderProject();
           resetForm();
         }
@@ -92,16 +97,21 @@ export const events = (() => {
       render.renderProject();
     }
     app.deleteProject(projectIndex);
+    handleLocalStorage.saveProjects(projectsArr);
     render.renderNav();
   };
 
   const todoDeleteButtonEvent = (project, todoId) => {
+    const projectsArr = app.getProjects();
     project.deleteTodo(project.getTodoIndex(todoId));
+    handleLocalStorage.saveProjects(projectsArr);
     render.renderProject();
   };
 
   const checkButtonEvent = (todo) => {
+    const projectsArr = app.getProjects();
     todo.check = !todo.check;
+    handleLocalStorage.saveProjects(projectsArr);
     render.renderProject();
   };
 
