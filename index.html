@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Todo List</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <header class="header">
+      <h1 class="header-title">Odin Todo List</h1>
+      <nav class="header-nav" tabindex="0">
+        <button class="nav-menu-button" aria-label="Open menu">
+          <img src="f1135a18bf7dd3ec261d.svg" alt="Menu icon" />
+        </button>
+        <div class="nav-header">
+          <h2 class="nav-title">Your Projects:</h2>
+          <button class="add-button project" aria-label="Add a new project">
+            <img src="26a667e08fcc41e21ffe.svg" alt="Add a new project" />
+            <span class="tooltip">Add Project</span>
+          </button>
+        </div>
+        <ul class="nav-list">
+          <li class="nav-list-item --selected">My Day</li>
+          <li class="nav-list-item">Tomorrow</li>
+        </ul>
+      </nav>
+    </header>
+
+    <nav class="sidebar-nav" tabindex="0">
+      <div class="nav-header">
+        <h2 class="nav-title">Your Projects:</h2>
+        <button class="add-button project" aria-label="Add a new project">
+          <img src="26a667e08fcc41e21ffe.svg" alt="Add a new project" />
+          <span id="add-button-project-tooltip" class="tooltip"
+            >Add Project</span
+          >
+        </button>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-list-item">My Day</li>
+        <li class="nav-list-item">Tomorrow</li>
+      </ul>
+    </nav>
+
+    <main class="main">
+      <dialog class="form-dialog">
+        <form class="form">
+          <span class="form-title">Title</span>
+          <fieldset class="form-content"></fieldset>
+          <fieldset class="form-buttons">
+            <button class="form-submit-button">Confirm</button>
+            <button class="form-close-button" type="button">Cancel</button>
+          </fieldset>
+        </form>
+      </dialog>
+      <div class="todo-content">
+        <div class="todo-content-header">
+          <h3 class="project-title">My Day</h3>
+          <button aria-label="Add a new todo" class="add-button todo">
+            Add Todo
+            <img src="3fdc55d471e8433fe3ee.svg" alt="Add new project" />
+          </button>
+        </div>
+        <div class="todo-card-container">
+          <div class="todo-card">
+            <div class="todo-card-left">
+              <button class="todo-check-button">
+                <img src="b28caaa3ff5ed85583e1.svg" />
+                <img class="--hidden" src="da2ca149004e0c01966e.svg" />
+              </button>
+            </div>
+            <div class="todo-card-right">
+              <div class="todo-card-right-header">
+                <h3 class="todo-title">Title That Is Also Very Long</h3>
+                <span class="todo-due-date">1/1/1</span>
+                <span class="todo-priority">Low</span>
+                <button class="todo-edit-button">
+                  <img src="aa03de6e0f1466bec1ca.svg" />
+                </button>
+                <button class="todo-delete-button">
+                  <img src="72efd1cbc8a52ea976bf.svg" />
+                </button>
+              </div>
+              <p class="todo-description">
+                Very Cool Todo Description That Is Very Long And Might Exceed
+                The Max Width Of The Card
+              </p>
+            </div>
+          </div>
+          <div class="todo-card">
+            <div class="todo-card-left">
+              <button class="todo-check-button">
+                <img src="b28caaa3ff5ed85583e1.svg" />
+              </button>
+            </div>
+            <div class="todo-card-right">
+              <div class="todo-card-right-header">
+                <h3 class="todo-title">Title</h3>
+                <span class="todo-due-date">1/1/1</span>
+                <span class="todo-priority">Low</span>
+                <button class="todo-edit-button">
+                  <img src="aa03de6e0f1466bec1ca.svg" />
+                </button>
+                <button class="todo-delete-button">
+                  <img src="72efd1cbc8a52ea976bf.svg" />
+                </button>
+              </div>
+              <p class="todo-description">Very Cool Todo Description</p>
+            </div>
+          </div>
+          <div class="todo-card">
+            <div class="todo-card-left">
+              <button class="todo-check-button">
+                <img src="b28caaa3ff5ed85583e1.svg" />
+              </button>
+            </div>
+            <div class="todo-card-right">
+              <div class="todo-card-right-header">
+                <h3 class="todo-title">Title That Is Also Very Long</h3>
+                <span class="todo-due-date">1/1/1</span>
+                <span class="todo-priority">Low</span>
+                <button class="todo-edit-button">
+                  <img src="aa03de6e0f1466bec1ca.svg" />
+                </button>
+                <button class="todo-delete-button">
+                  <img src="72efd1cbc8a52ea976bf.svg" />
+                </button>
+              </div>
+              <p class="todo-description">
+                Very Cool Todo Description That Is Very Long And Might Exceed
+                The Max Width Of The Card
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
