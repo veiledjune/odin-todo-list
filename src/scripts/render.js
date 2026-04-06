@@ -108,10 +108,21 @@ export const render = (() => {
         const listItem = createDomElements.createBasicElement(
           'li',
           'nav-list-item',
+        );
+        const listItemButton = createDomElements.createBasicElement(
+          'button',
+          'list-item-button',
           project.title,
         );
-        if (project.id === selectedProject.id)
+        listItemButton.setAttribute(
+          'aria-label',
+          `View ${project.title} project`,
+        );
+        listItem.appendChild(listItemButton);
+        if (project.id === selectedProject.id) {
           listItem.classList.add('--selected');
+          listItemButton.setAttribute('aria-selected', 'true');
+        } else listItemButton.setAttribute('aria-selected', 'false');
         listItem.addEventListener('click', () => {
           app.setSelectedProject(project);
           renderNav();
@@ -124,6 +135,10 @@ export const render = (() => {
         const deleteButton = createDomElements.createBasicElement(
           'button',
           'project-delete-button',
+        );
+        deleteButton.setAttribute(
+          'aria-label',
+          `Delete ${project.title} project`,
         );
         deleteButton.addEventListener('click', (event) => {
           event.stopPropagation();
@@ -161,13 +176,24 @@ export const render = (() => {
         'button',
         'todo-check-button',
       );
+      checkButton.setAttribute(
+        'aria-label',
+        todo.check
+          ? `Mark ${todo.title} todo as incomplete`
+          : `Mark ${todo.title} todo as complete`,
+      );
       checkButton.addEventListener('click', () =>
         events.checkButtonEvent(todo),
       );
       const checkmarkIcon = createDomElements.createImage(checkmarkSrc);
       const circleIcon = createDomElements.createImage(circleSrc);
-      if (!todo.check) checkmarkIcon.classList.add('--hidden');
+      if (!todo.check) {
+        checkmarkIcon.classList.add('--hidden');
+        checkmarkIcon.setAttribute('aria-hidden', 'true');
+      }
       checkButton.append(checkmarkIcon, circleIcon);
+      checkmarkIcon.alt = `Mark ${todo.title} as incomplete`;
+      circleIcon.alt = `Mark ${todo.title} as complete`;
       const title = createDomElements.createBasicElement(
         'h4',
         'todo-title',
@@ -200,6 +226,7 @@ export const render = (() => {
         'button',
         'todo-edit-button',
       );
+      editButton.setAttribute('aria-label', `Edit ${todo.title} todo`);
       const editButtonTooltip = createDomElements.createBasicElement(
         'span',
         'tooltip',
@@ -208,12 +235,14 @@ export const render = (() => {
       editButton.appendChild(editButtonTooltip);
       editButton.addEventListener('click', () => events.editButtonEvent(todo));
       const editIcon = createDomElements.createImage(editSrc);
+      editIcon.alt = `Edit ${todo.title} todo`;
       editButton.appendChild(editIcon);
 
       const deleteButton = createDomElements.createBasicElement(
         'button',
         'todo-delete-button',
       );
+      deleteButton.setAttribute('aria-label', `Delete ${todo.title} todo`);
       const deleteButtonTooltip = createDomElements.createBasicElement(
         'span',
         'tooltip',
@@ -225,6 +254,7 @@ export const render = (() => {
       );
 
       const todoDeleteImg = createDomElements.createImage(deleteSrc);
+      todoDeleteImg.alt = `Delete ${todo.title} todo`;
       deleteButton.appendChild(todoDeleteImg);
       todoCardLeft.appendChild(checkButton);
       todoCardRightHeader.append(

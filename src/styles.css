@@ -90,9 +90,13 @@ nav img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.25rem;
   cursor: pointer;
   padding: 5px;
+}
+
+.list-item-button {
+  color: white;
+  font-size: 1.25rem;
 }
 
 .tooltip {
@@ -329,6 +333,10 @@ select:focus {
   margin-top: 1em;
   display: flex;
   gap: 5px;
+}
+
+.form-buttons button:focus {
+  outline: 2px solid green;
 }
 
 .form-submit-button {

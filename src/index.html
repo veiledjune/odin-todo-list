@@ -8,14 +8,14 @@
   <body>
     <header class="header">
       <h1 class="header-title">Odin Todo List</h1>
-      <nav class="header-nav">
-        <button class="nav-menu-button">
-          <img src="icons/menu-white.svg" />
+      <nav class="header-nav" tabindex="0">
+        <button class="nav-menu-button" aria-label="Open menu">
+          <img src="icons/menu-white.svg" alt="Menu icon" />
         </button>
         <div class="nav-header">
           <h2 class="nav-title">Your Projects:</h2>
-          <button class="add-button project">
-            <img src="icons/plus-white.svg" />
+          <button class="add-button project" aria-label="Add a new project">
+            <img src="icons/plus-white.svg" alt="Add a new project" />
             <span class="tooltip">Add Project</span>
           </button>
         </div>
@@ -26,12 +26,14 @@
       </nav>
     </header>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" tabindex="0">
       <div class="nav-header">
         <h2 class="nav-title">Your Projects:</h2>
-        <button class="add-button project">
-          <img src="icons/plus-white.svg" />
-          <span class="tooltip">Add Project</span>
+        <button class="add-button project" aria-label="Add a new project">
+          <img src="icons/plus-white.svg" alt="Add a new project" />
+          <span id="add-button-project-tooltip" class="tooltip"
+            >Add Project</span
+          >
         </button>
       </div>
       <ul class="nav-list">
@@ -54,7 +56,7 @@
       <div class="todo-content">
         <div class="todo-content-header">
           <h3 class="project-title">My Day</h3>
-          <button class="add-button todo">
+          <button aria-label="Add a new todo" class="add-button todo">
             Add Todo
             <img src="icons/plus-black.svg" alt="Add new project" />
           </button>
